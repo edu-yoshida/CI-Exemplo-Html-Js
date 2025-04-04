@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: [ main ] # O workflow será executado em cada "pull request" direcionado à branch "main".
 
+permissions:
+  contents: write  # Permite escrever no conteúdo do repositório (código, arquivos)
+  pages: write     # Permite deploy no GitHub Pages (se você estiver usando)
+  id-token: write  # Necessário para alguns tipos de autenticação com provedores externos
+
 jobs:
   build:
 
