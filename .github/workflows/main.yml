@@ -22,7 +22,6 @@ jobs:
       - name: Executar testes
         run: |
           echo "Nenhum teste implementado ainda. Adicione testes em script.js!"
-          echo "Podemos adicionar testes com Jest ou Cypress no futuro."
           echo "Testes simulados aprovados"
           exit 0
 
@@ -32,7 +31,7 @@ jobs:
       - name: Upload dos arquivos para deploy
         uses: actions/upload-pages-artifact@v2
         with:
-          path: .  # Altere para "dist" ou "build" se você tiver uma etapa de build
+          path: .  # ou "dist", se você estiver usando React, Vite, etc.
 
   deploy:
     needs: build
