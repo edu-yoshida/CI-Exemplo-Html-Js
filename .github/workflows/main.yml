@@ -16,7 +16,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout do código
+        uses: actions/checkout@v3
 
       - name: Executar testes
         run: |
@@ -31,7 +32,7 @@ jobs:
       - name: Upload dos arquivos para deploy
         uses: actions/upload-pages-artifact@v2
         with:
-          path: .  # Ajuste este path se quiser fazer deploy de uma pasta específica (como "dist" ou "build")
+          path: .  # Altere para "dist" ou "build" se você tiver uma etapa de build
 
   deploy:
     needs: build
