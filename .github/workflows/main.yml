@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -16,28 +16,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout do código
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
       - name: Executar testes
         run: |
           echo "Nenhum teste implementado ainda. Adicione testes em script.js!"
+          echo "Podemos adicionar testes com Jest ou Cypress no futuro."
           echo "Testes simulados aprovados"
-          exit 0
+          exit 0 # Simula testes passando
 
-      - name: Configurar GitHub Pages
-        uses: actions/configure-pages@v3
-
-      - name: Upload dos arquivos para deploy
+      - name: Upload artifacts
         uses: actions/upload-pages-artifact@v2
         with:
-          path: .  # ou "dist", se você estiver usando React, Vite, etc.
+          path: . # Diretório a ser deployado (raiz do repositório neste caso)
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-
-    steps:
-      - name: Deploy para o GitHub Pages
+      - name: Deploy para GitHub Pages
+        if: github.ref == 'refs/heads/main'
         uses: actions/deploy-pages@v2
